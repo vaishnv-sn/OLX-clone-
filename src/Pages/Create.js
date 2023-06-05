@@ -6,7 +6,7 @@ const CreatePage = () => {
   return (
     <Fragment>
       <Header />
-      <Create/>
+      <Create />
     </Fragment>
   );
 };

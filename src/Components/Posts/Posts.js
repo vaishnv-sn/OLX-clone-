@@ -3,10 +3,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import Heart from '../../assets/Heart';
 import './Post.css';
 import { firebaseContext } from '../../store/Context';
+import { postContext } from '../../store/postContext';
+import { useHistory } from 'react-router-dom';
 
 function Posts() {
   const [products, setProducts] = useState([]);
   const { firebase } = useContext(firebaseContext);
+  const { setPostDetails } = useContext(postContext);
+  const history = useHistory();
 
   useEffect(() => {
     firebase.firestore().collection('products').get().then((snapshot) => {
@@ -33,7 +37,12 @@ function Posts() {
           {
             products.map((product) => {
               return (
-                <div className="card">
+                <div
+                  className="card"
+                  onClick={() => {
+                    setPostDetails(product);
+                    history.push('/view')
+                  }}>
                   <div className="favorite">
                     <Heart></Heart>
                   </div>

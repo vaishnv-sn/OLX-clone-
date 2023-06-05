@@ -10,6 +10,8 @@ import Home from './Pages/Home';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
 import Create from './Pages/Create';
+import View from './Pages/ViewPost';
+import Post from './store/postContext'
 
 function App() {
   const { setUser } = useContext(AuthContext);
@@ -23,12 +25,16 @@ function App() {
 
   return (
     <div>
-      <Router>
-        <Route exact path='/' component={Home} />
-        <Route path='/signup' component={Signup} />
-        <Route path='/login' component={Login} />
-        <Route path='/create' component={Create} />
-      </Router>
+      
+      <Post>
+        <Router>
+            <Route exact path='/' component={Home} />
+            <Route path='/signup' component={Signup} />
+            <Route path='/login' component={Login} />
+            <Route path='/create' component={Create} />
+            <Route path='/view' component={View} />
+        </Router>
+      </Post>
     </div>
   );
 }
